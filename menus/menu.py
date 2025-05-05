@@ -16,7 +16,7 @@ def arithmetic_menu():
     print("What do you want to do? ")
     print("1. Addition \n2. Subtraction")
     print("3. Multiplication\n4. Division")
-    print("5. Back to Main Menu")
+    print("5. Full Arithmetic Calculation \n6. Back to Main Menu")
 
 def algebra_menu():
     print("***ALGEBRA***\n")

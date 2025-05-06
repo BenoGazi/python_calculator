@@ -1,4 +1,4 @@
-from .linear_solver import solve_linear_equation, solve_simultaneous_equations
+from .linear_solver import solve_linear_equation_from_string, solve_simultaneous_equations
 from .quad_solver import solve_quadratic, graph_quad
 from .trans_formulae import change_of_subject
 from menus.menu import algebra_menu
@@ -8,16 +8,13 @@ def algebra_handler():
     algebra_menu()
     sub_choice = input("Select 1, 2, 3, 4 or 5: ")
     if sub_choice == "1":
-        try:
-            # Prompt user for coefficients a and b
-            a = int(input("Enter value for a: "))
-            b = int(input("Enter value for b: "))
-            # Solve the linear equation and display result
-            result = solve_linear_equation(a, b)
-            print("solution", result)
-        except ValueError:
-            # Error handling for invalid input
-            print("Please enter valid numbers")
+            equation_str = input("Enter a linear equation (e.g., 3x-4x+5x+2=4x+5x+9+8): ")
+            result = solve_linear_equation_from_string(equation_str)
+            if "error" in result:
+                print("Error:", result["error"])
+            else:
+                print("Simplified Equation:", result["equation"])
+                print("Solution: x =", result["solution"])
     
     # Handle simultaneous equations solving
     elif sub_choice == "2":
